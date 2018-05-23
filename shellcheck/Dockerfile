@@ -2,8 +2,8 @@ FROM alpine:3.7
 
 LABEL maintainer "Umesh Yadav <umesh4257@gmail.com>"
 
-RUN apk update \
-    && apk add bash file \
+RUN apk --no-cache add \
+    bash file \
     && wget https://storage.googleapis.com/shellcheck/shellcheck-stable.linux.x86_64.tar.xz \
     && tar --xz -xvf "shellcheck-stable.linux.x86_64.tar.xz" \
     && cp /shellcheck-stable/shellcheck /usr/bin/shellcheck \
