@@ -1,0 +1,12 @@
+sudo: false
+dist: trusty
+
+language: bash
+
+services:
+  - docker
+
+script:
+ - make build
+
+fast_finish: true
