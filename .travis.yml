@@ -7,6 +7,12 @@ services:
   - docker
 
 script:
- - make build
+  - make test
+
+deploy:
+  provider: script
+  script: make build
+  on:
+    branch: master
 
 fast_finish: true
