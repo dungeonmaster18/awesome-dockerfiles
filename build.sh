@@ -9,7 +9,7 @@ set -o pipefail
 
 # Get changed dockerfiles after previous commit
 IFS=$'\n'
-changed_files=( "$(git diff HEAD~ --name-only -- "*Dockerfile")" )
+changed_files=("$(git diff HEAD~ --name-only -- "*Dockerfile")")
 unset IFS
 
 # Build and push docker images only if it is the master branch
@@ -22,7 +22,9 @@ if [[ "$TRAVIS_BRANCH" == "master" && "${#changed_files[@]}" -ne 0 ]]; then
 
     build_dir=$(dirname "$f")
     base="${build_dir%%\/*}"
-    tag="${build_dir##*}"
+    tag="${build_dir##$base}"
+    tag="${tag##\/}"
+    
     if [[ -z "$tag" ]]; then
       tag=latest
     fi

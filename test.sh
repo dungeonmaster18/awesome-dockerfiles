@@ -15,11 +15,11 @@ VALIDATE_UPSTREAM="$(git rev-parse --verify FETCH_HEAD)"
 VALIDATE_COMMIT_DIFF="$VALIDATE_UPSTREAM...$VALIDATE_HEAD"
 
 validate_diff() {
-	if [ "$VALIDATE_UPSTREAM" != "$VALIDATE_HEAD" ]; then
-		git diff "$VALIDATE_COMMIT_DIFF" "$@"
-	else
-		git diff HEAD~ "$@"
-	fi
+  if [ "$VALIDATE_UPSTREAM" != "$VALIDATE_HEAD" ]; then
+    git diff "$VALIDATE_COMMIT_DIFF" "$@"
+  else
+    git diff HEAD~ "$@"
+  fi
 }
 
 # Get changed dockerfiles after previous commit
@@ -29,21 +29,21 @@ unset IFS
 
 # build the changed dockerfiles
 for f in "${changed_files[@]}"; do
-    if ! [[ -e "$f" ]]; then
-      continue
-    fi
+  if ! [[ -e "$f" ]]; then
+    continue
+  fi
 
-    build_dir=$(dirname "$f")
-    base="${build_dir%%\/*}"
-    tag="${build_dir##*}"
-    if [[ -z "$tag" ]]; then
-      tag=latest
-    fi
+  build_dir=$(dirname "$f")
+  base="${build_dir%%\/*}"
+  tag="${build_dir##*}"
+  if [[ -z "$tag" ]]; then
+    tag=latest
+  fi
 
-	(
-	set -x
-	docker build -t "{$base}:{$tag}" "$build_dir"
-	)
+  (
+    set -x
+    docker build -t "{$base}:{$tag}" "$build_dir"
+  )
 
-	echo "Successfully built "{$base}:{$tag}" with context "$build_dir""
+  echo "Successfully built "{$base}:{$tag}" with context "$build_dir""
 done
