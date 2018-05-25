@@ -35,8 +35,7 @@ for f in "${changed_files[@]}"; do
 
     build_dir=$(dirname "$f")
     base="${build_dir%%\/*}"
-    tag="${build_dir##*\/}"
-
+    tag="${build_dir##*}"
     if [[ -z "$tag" ]]; then
       tag=latest
     fi

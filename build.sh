@@ -23,7 +23,6 @@ if [[ "$TRAVIS_BRANCH" == "master" && "${#changed_files[@]}" -ne 0 ]]; then
     build_dir=$(dirname "$f")
     base="${build_dir%%\/*}"
     tag="${build_dir##*}"
-    echo $base $tag
     if [[ -z "$tag" ]]; then
       tag=latest
     fi
