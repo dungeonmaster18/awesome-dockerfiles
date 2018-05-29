@@ -9,4 +9,6 @@ RUN apk --no-cache add \
     && wget "https://github.com/theupdateframework/notary/releases/download/${NOTARY_VERSION}/notary-Linux-amd64" -O /usr/bin/notary \
     && chmod +x /usr/bin/notary
 
-CMD [ "notary" ]
+ENTRYPOINT [ "notary" ]
+
+CMD [ "help" ]
