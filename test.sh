@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+
+# AUTHOR= Jessie Frazelle
+# It's an copy of the jessfraz dockerfiles test.
+
 set -e
 
 # Exit on error in any of pipe commands
