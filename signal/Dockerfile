@@ -23,12 +23,12 @@ RUN apt-get update \
     libasound2 \
     libxkbfile1 \ 
     libnotify4 \
-	libgtk-3-0 \
-	libx11-xcb1 \
+    libgtk-3-0 \
+    libx11-xcb1 \
     gconf2 \
-	gconf-service \
+    gconf-service \
     libpulse-dev \
-	gvfs-bin \
+    gvfs-bin \
     xdg-utils \
     && rm -rf /var/lib/apt/lists/*
 
