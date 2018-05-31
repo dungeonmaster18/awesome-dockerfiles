@@ -9,7 +9,7 @@ set -o pipefail
 
 # Get changed dockerfiles after previous commit
 IFS=$'\n'
-changed_files=("$(git diff HEAD~ --name-only -- "*Dockerfile")")
+changed_files=( $(git diff HEAD~ --name-only -- "*Dockerfile") )
 unset IFS
 
 # Build and push docker images only if it is the master branch

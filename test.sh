@@ -28,7 +28,7 @@ validate_diff() {
 
 # Get changed dockerfiles after previous commit
 IFS=$'\n'
-changed_files="($(validate_diff --name-only -- '*Dockerfile'))"
+changed_files=( $(validate_diff --name-only -- '*Dockerfile') )
 unset IFS
 
 # build the changed dockerfiles
@@ -46,7 +46,7 @@ for f in "${changed_files[@]}"; do
 
   (
     set -x
-    docker build -t "{$base}:{$tag}" "$build_dir"
+    docker build -t "$DOCKER_USERNAME/$base:$tag" "$build_dir"
   )
 
   echo "Successfully built "{$base}:{$tag}" with context "$build_dir""
