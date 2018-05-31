@@ -25,7 +25,7 @@ RUN apt-get update && apt-get install -y \
     software-properties-common \
     --no-install-recommends
 
-RUN curl _LO https://updates.tdesktop.com/tlinux/tsetup.1.2.17.tar.xz \
+RUN curl -sSLO https://updates.tdesktop.com/tlinux/tsetup.1.2.17.tar.xz \
     && tar --xz -xvf tsetup.1.2.17.tar.xz \
     && mv Telegram/ /opt/ \
     && ln -sf /opt/Telegram/Telegram /usr/bin/telegram
