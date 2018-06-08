@@ -6,13 +6,15 @@ language: bash
 services:
   - docker
 
-script:
-  - make test
-
-deploy:
-  provider: script
-  script: make build
-  on:
-    branch: master
+jobs:
+  include:
+    - stage: test
+      script: make test
+    - stage: deploy
+      script: make build
+      if: branch = master
+    - stage: daily-deploy
+      script: make build-all
+      if: type = cron
 
 fast_finish: true

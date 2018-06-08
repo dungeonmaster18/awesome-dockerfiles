@@ -6,6 +6,10 @@ build:  ## Installs the bin and etc directory files and the dotfiles.
 test:  ## Installs the bin and etc directory files and the dotfiles.
 	@./test.sh
 
+.PHONY: test
+test:  ## Installs the bin and etc directory files and the dotfiles.
+	@./build-all.sh
+
 PHONY: help
 help: ## Shows help.
 	@echo
