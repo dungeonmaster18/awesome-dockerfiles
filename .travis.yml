@@ -9,12 +9,13 @@ services:
 jobs:
   include:
     - stage: test
-      script: make test
+      script: ./test.sh
+      if: type != cron
     - stage: deploy
-      script: make build
-      if: branch = master
+      script: ./build.sh
+      if: type != cron
     - stage: daily-deploy
-      script: make build-all
+      script: ./build-all.sh
       if: type = cron
 
 fast_finish: true
